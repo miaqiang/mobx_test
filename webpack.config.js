@@ -6,10 +6,10 @@ const webpack=require('webpack');
 const config={
     mode:'development',
     entry:{
-        app:'./src/index.js'
+        app:'./src/index.jsx'
     },
     output:{
-        filename:'bundle.js',
+        filename:'main.js',
         path:path.resolve(__dirname,'dist')
     },
     module:{
@@ -26,7 +26,7 @@ const config={
                 use:{
                     loader:'babel-loader',
                     options:{
-                        presets:['@babel/preset-env'],
+                        presets:['@babel/preset-env','@babel/preset-react'],
                         plugins:[
                             ["@babel/plugin-proposal-decorators", { "legacy": true }],
                              'transform-class-properties',
@@ -37,11 +37,11 @@ const config={
             }
         ]
     },
-    devServer:{
+   /* devServer:{
         contentBase:'./dist',
         hot:true,
         port:8082
-    },
+    },*/
     plugins:[
         // new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
